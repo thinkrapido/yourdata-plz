@@ -1,0 +1,17 @@
+Und hier kommt die Aufgabe:
+Webservice zum Lookup von Orten und Bundesland aus PLZ
+- Kurzkonzept zur Implementierung erstellen (Komponenten, Schnittstellen, Funktionsaufteilung)
+- Im Fokus stehen die Ideen für die Gesamtarchitektur, die Logik selbst ist bewusst trivial gehalten
+- Vorgaben und Anforderungen
+-- Implementierung in Java
+-- Gerne Nutzung von geeigneten Frameworks
+-- Eingabe von unvollständigen Teilwerten möglich (z.B. 70 für 70174, immer linksbündig gedacht)
+-- Ergebnis Trefferanzahl, PLZ + Stadt + Bundesland,  Ergebnisiste mit einem Treffer bei eindeutigen
+    und mehrere Einträge bei mehrdeutigen Ergebnissen (max. 30 Ergebnisse)
+-- Schnittstellenbereichung und Eingabevalidierung über Swagger
+-- Daten müssen in einer Postgres-DB gehalten werden, wir liefern eine CSV-Datei als Input (s. Anhang, Quelle: Openstreetmap)
+-- Aufrufe des Webservice werden in der Datenbank mit Zeitstempel und Ergebnis protokolliert
+-- Fehlerbehandlung (Inputfehler, Systemfehler)
+-- geeignete Absicherung der Requests durch API-Key, Basic-Auth o.ä.
+-- Datenbank und Webservice in separaten Docker-Containern
+-- geeignete Unit-Tests
