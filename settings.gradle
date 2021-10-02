@@ -1,2 +1,3 @@
 rootProject.name = 'plz'
 
+include('webapp')
