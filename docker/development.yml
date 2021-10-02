@@ -6,3 +6,5 @@ services:
       - POSTGRES_PASSWORD=plz
       - POSTGRES_USER=plz
       - POSTGRES_DB=plz
+    ports:
+      - 5432:5432

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd" changeLogId="67afe41c-20db-44d5-90b4-97a002521ac4">
+    <changeSet id="20211002_1" author="Romeo Disca">
+        <createTable tableName="plz">
+            <column name="osm_id" type="varchar(250)" />
+            <column name="ort" type="varchar(250)" />
+            <column name="plz" type="varchar(250)">
+                <constraints primaryKey="true" primaryKeyName="plz_pk" />
+            </column>
+            <column name="bundesland" type="varchar(250)" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
