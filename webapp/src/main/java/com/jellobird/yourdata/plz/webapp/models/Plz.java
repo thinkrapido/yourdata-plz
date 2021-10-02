@@ -2,6 +2,7 @@ package com.jellobird.yourdata.plz.webapp.models;
 
 import lombok.Data;
 import lombok.NonNull;
+import lombok.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Table;
@@ -39,5 +40,14 @@ public class Plz implements Persistable<UUID> {
             id = UUID.randomUUID();
             return true;
         }
+    }
+
+    @Value(staticConstructor = "of")
+    public static class Output {
+
+        String ort;
+        String plz;
+        String bundesland;
+
     }
 }

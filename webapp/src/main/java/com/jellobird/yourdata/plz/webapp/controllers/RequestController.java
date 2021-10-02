@@ -17,8 +17,8 @@ public class RequestController {
     PlzRepository plzRepository;
 
     @GetMapping("")
-    public Flux<Plz> getPlz(@RequestParam("search") String partialString) {
-        return plzRepository.search(partialString);
+    public Flux<Plz.Output> getPlz(@RequestParam("search") String partialString) {
+        return plzRepository.search(partialString).map(plz -> Plz.Output.of(plz.getOrt(), plz.getPlz(), plz.getBundesland()));
     }
 
 }
