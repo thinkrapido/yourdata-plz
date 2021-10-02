@@ -15,4 +15,12 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
             <column name="bundesland" type="varchar(250)" />
         </createTable>
     </changeSet>
+    <changeSet id="20211002_2" author="Romeo Disca">
+        <sql>alter table plz drop constraint plz_pk</sql>
+        <addColumn tableName="plz">
+            <column name="id" type="varchar(250)">
+                <constraints primaryKey="true" primaryKeyName="id_pk" />
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

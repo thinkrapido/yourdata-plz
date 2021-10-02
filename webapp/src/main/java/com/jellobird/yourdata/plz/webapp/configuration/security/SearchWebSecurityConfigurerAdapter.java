@@ -26,9 +26,10 @@ public class SearchWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                .authorizeRequests()
                 .antMatchers("/securityNone").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/api/v1").hasAuthority("ROLE_USER")
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(authenticationEntryPoint);
