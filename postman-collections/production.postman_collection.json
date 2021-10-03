@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "08680c9b-0915-4d2f-a6d4-860ebbd7fb66",
+		"name": "production",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9000/api/v1/plz?search=7",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "rest",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "rest",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/api/v1/plz?search=7309",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"v1",
+						"plz"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "7309"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/api/v1/ingest",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ingest",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ingest",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/work/yourdata/plz/data/zuordnung_plz_ort.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9000/api/v1/ingest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"v1",
+						"ingest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
