@@ -1,0 +1,26 @@
+version: "3"
+services:
+  prod-db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=plz
+      - POSTGRES_USER=plz
+      - POSTGRES_DB=plz
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    networks:
+      - prod-backend
+  prod-web:
+    image: yourdata/plz-server
+    ports:
+      - "9000:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+    networks:
+      - prod-backend
+      - prod-frontend
+
+networks:
+  prod-backend:
+  prod-frontend:

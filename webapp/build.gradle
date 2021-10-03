@@ -32,6 +32,12 @@ dependencies {
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.springframework.security:spring-security-test'
     runtimeOnly 'org.springdoc:springdoc-openapi-ui:1.5.2'
+    runtimeOnly 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation 'org.liquibase:liquibase-core:4.5.0'
+    implementation 'org.springframework:spring-jdbc:5.3.10'
+    implementation 'org.postgresql:postgresql:42.1.4'
+    implementation 'com.ongres.scram:client:2.1'
 }
 
 test {

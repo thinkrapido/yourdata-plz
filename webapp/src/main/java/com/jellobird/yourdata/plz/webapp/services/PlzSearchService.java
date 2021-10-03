@@ -29,7 +29,7 @@ public class PlzSearchService {
                 .filter(line -> !"".equals(line))
                 .map(line -> line.split(","))
                 .map(parts -> Plz.of(parts[0], parts[1], parts[2], parts[3]))
-                .collect(Collectors.toList()))
+                .collect(Collectors.toList())).blockLast()
                 ;
     }
 

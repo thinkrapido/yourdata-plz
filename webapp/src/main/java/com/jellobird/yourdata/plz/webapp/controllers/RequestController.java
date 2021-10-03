@@ -30,7 +30,9 @@ public class RequestController {
     public Flux<Plz.Output> getPlz(@RequestParam("search") String partialString) {
         var out = plzRepository.search(partialString).map(plz -> Plz.Output.of(plz.getOrt(), plz.getPlz(), plz.getBundesland()));
 
-        logEntryRepository.save(LogEntry.of(new Timestamp(new java.util.Date().getTime()), Arrays.stream(Mono.from(out.map(item -> item.toString()).buffer()).block().toArray()).collect(Collectors.toList()).toString())).block();
+        if (out.hasElements().block()) {
+            logEntryRepository.save(LogEntry.of(new Timestamp(new java.util.Date().getTime()), Arrays.stream(Mono.from(out.map(item -> item.toString()).buffer()).block().toArray()).collect(Collectors.toList()).toString())).block();
+        }
 
         return out;
     }

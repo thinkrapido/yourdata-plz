@@ -1,34 +1,64 @@
 
 # Yourdata example project
 
-## OpenApi
+## How to use the application
+
+After ingesting the dataset, you will see up to 30 results when querying.
+
+Querying is done with this command:
+
+```
+http://localhost:<8080 or 9000>/api/v1/plz?search=<query-string>
+```
+
+The query string can have any characters. Hence, only digits make sense.
+
+You can also search for partial zip codes starting from left.
+
+In Germany zip codes are in a 5-digit form.
+
+## How to Run the Application
+
+After starting the database container, the database is empty.
+
+Please ingest the data set first. *(See below)*
+
+### In Development Mode
+
+```
+> docker-compose -f docker/development.yml up -d
+> gradle bootRun
+```
+
+The application is running at port `8080`.
+
+### In Production Mode
+
+```
+> gradle bootBuildImage --imageName=yourdata/plz-server
+> docker-compose -f docker/development.yml up -d
+```
+
+The application is running at port `9000`.
+
+## Creating Docker Container
+
+* Create docker image `gradle bootBuildImage --imageName=yourdata/plz-server`
+
+## OpenApi Documentation
 
 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-## How to create development environment
+## How to ingest data set into the database
 
-### How to provision the database
-
-*(Linux-based system)*
-
-* First, install postgresql docker container `docker-compose -f docker/development.yml`
-  * Prerequisite: Install docker-compose 
-
-* Change to folder `liquibase`
-* `cp liquibase.example.properties liquibase.properties`
-* Provide API KEY in file `liquibase.properties`
-    * you must obtain an api key from [https://hub.liquibase.com](https://hub.liquibase.com) to proceed
-* Enter command `./liquibase register-changelog` and follow instructions
-* Enter command `./liquibase update`
-
-### How to ingest data set into the database
-
-data set needs to be pushed to the server via file upload.
+The data set needs to be pushed to the server via file upload.
 
 Send per POST method to `http://localhost:8080/api/v1/ingest`
 file parameter with file name of csv data set via `form-data`.
 
 See: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/ingest-controller/handleFileUpload)
+
+You can find a sample data set in the folder <project>/data.
 
 File content is of format *(Header is mandatory)*:
 
